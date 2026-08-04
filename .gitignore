@@ -1,0 +1,13 @@
+# Python (kolegiji_dag reference CLI)
+__pycache__/
+*.pyc
+*.pyo
+
+# OS / editor cruft
+.DS_Store
+__pycache__/
+*.pyc
+
+# Local agent config, not shipped
+.serena/
+CLAUDE.md
