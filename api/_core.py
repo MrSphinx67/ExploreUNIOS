@@ -395,16 +395,15 @@ def _institutions(unizg_only=True):
             out.append({"id": int(idm.group(1)), "naziv": cells[0],
                         "nadredjena": cells[1], "grad": cells[2]})
     if unizg_only:
-        out = [x for x in out if "Sveučilište u Zagrebu" in x["nadredjena"]]
+        out = [x for x in out if "Sveučilište Josipa Jurja Strossmayera u Osijeku" in x["nadredjena"]]
     return out
 
 
 ALIASES = {
-    "fer": 36, "pmf": 119, "pmf-mat": 37, "pmf matematicki": 37, "pmf-prir": 119,
-    "ffzg": 130, "fsb": 120, "efzg": 67, "pbf": 58, "fkit": 125, "foi": 16,
-    "mef": 108, "pravni": 66, "arhitektonski": 54, "agronomski": 178, "erf": 13,
-    "fpzg": 15, "fpz": 135, "rgn": 195, "kif": 34, "vef": 53, "adu": 1053,
-    "alu": 381, "muza": 1349, "ttf": 117, "grad": 82, "grf": 128, "geof": 7,
+    "aukos": 361, "efos": 10, "fazos": 79, "ferit": 165, "mathos": 372, "fpmoi": 372,
+    "ftrr": 370, "fdmz": 356, "foozos": 245, "ffos": 122, "gfos": 149, "kbfdj": 2032,
+    "kifos": 368, "mefos": 236, "biologija": 285, "fizika": 1312, "kemija": 291,
+    "pravos": 111, "ptfos": 113,
 }
 
 
