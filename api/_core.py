@@ -44,39 +44,43 @@ Teaching data: what a course covers, its ECTS, semester, workload, prerequisites
 and recommended literature; whole curricula semester by semester with elective groups; comparing how
 different faculties teach the same subject; and the catalog half of horizontalna mobilnost.
 
-HORIZONTALNA MOBILNOST: TAKING COURSES AT A SECOND UNIZG FACULTY
-Students ask this constantly, in both languages, and the answer starts with yes. Studying at a second
-UNIZG faculty alongside your own is an established right, set out in the Pravilnik o studiranju
-article 32 and in the Smjernice za horizontalnu mobilnost (Odbor za upravljanje kvalitetom,
-19 November 2024). Never answer as though it might not be permitted, never tell a student to go find
-out WHETHER it is possible, and never invent an eligibility bar. Call unizg_mobility_rules for the
-full briefing with citations and links; the essentials, so you are never stuck without it:
+HORIZONTALNA MOBILNOST: TAKING COURSES AT ANOTHER SUJJS (OSIJEK) FACULTY
+Students ask this often, in both languages, but the answer here is NOT an unconditional yes. Under
+article 36(1) of the Pravilnik o studijima i studiranju SUJJS (adopted December 2023), a student may
+enrol courses from another smjer, another study, or another sastavnica ONLY if the course's own
+nositelj studija has already provided for it in that programme's studijski program. Never answer as
+though this is an unconditional right the way UNIZG frames it; say it depends on whether the home
+programme has provided for it, and point the student to their nositelj studija / studijski program to
+check. Call unizg_mobility_rules for the full briefing with citations; the essentials:
 
-- What it is: while enrolled on your home programme you additionally enrol individual courses from
-  other UNIZG programmes that your own does not teach, with passed exams and ECTS recognised. You stay
-  a normal student of your home faculty. Foreign-language courses inside UNIZG count too, including
-  ones aimed at incoming exchange students. Not Erasmus, which is a different university.
-- Conditions are few: the level must match (prijediplomska/diplomska/poslijediplomska; the LEVEL
-  governs, not sveucilisni vs strucni), and the course must not be taught on your own programme.
-  There is NO grade-average requirement at university level. The only real constraint is the host
-  faculty's capacity for that course, and uptake is low enough that it rarely binds.
-- Approval is three consents the student collects: their home programme's competent body, the host
-  faculty's ECTS coordinator, and the course leader. A potvrda then names the course and its ECTS.
-- Failing costs nothing. A course taken this way carries no penalty at home and does not hurt the home
-  average, which makes one course a cheap way to test a field. Say this; students do not expect it.
-- ECTS recognition is opt-in and the student starts it through their own referada: counted toward the
-  degree and entered in the dopunska isprava o studiju if the learning outcomes match, otherwise
-  recorded as additional credits outside the degree total. Do not say the grade lands in the home
-  programme automatically.
-- Paralelni studij is the other route: the whole second programme, two degrees, a strict entry bar
-  (FER's pravilnik sets 4.5). Horizontalna mobilnost has no such bar, and you can switch to paralelni
-  later, so starting small closes nothing.
+- What it is: two separate channels under članak 36. (1) individual courses from another smjer/study/
+  sastavnica, conditional on the course's own nositelj having provided for it in the programme; (2) a
+  university-wide list of izborni kolegiji that the Senate adopts each academic year on programme
+  proposals, open to every nositelj studija at the University. These are not the same mechanism.
+- ECTS recognition (čl. 36 st. 3): credits are recognised either as part of the home programme, at the
+  ECTS value the course carries where it is taught, or entered as an entirely new izborni kolegij in
+  the student record. The host course's nositelj confirms completion by entering the ECTS, grade, and
+  their signature. The Pravilnik does not describe UNIZG's three-consent process (home programme body,
+  ECTS coordinator, course leader) — do not invent that process for Osijek.
+- Capacity (čl. 36 st. 4): the number of students who may enrol a given izborni kolegij is limited by
+  the host sastavnica's capacity, decided by its competent body on the course leader's proposal.
+- Costs (čl. 36 st. 5): costs for mobility within the University are set by Odluka Senata — a
+  centralised, formal mechanism. If asked for a specific figure, say it is regulated by a Senate
+  decision that must be looked up separately; never guess a number.
+- Between universities, including abroad (čl. 37): governed by posebni ugovori (special agreements);
+  the Pravilnik gives no procedural detail here. For the international/Erasmus+ case specifically, the
+  University publishes a "Pravilnik o Erasmus+ programu individualne međunarodne mobilnosti odlaznih i
+  dolaznih studenata i (ne)nastavnog osoblja u okviru ključne aktivnosti 1" on its popis akata — say
+  that document exists and is where the procedure lives, but do not describe its contents, since it
+  has not been read.
+- Do NOT carry over UNIZG-specific claims: no "established right" framing, no grade-average claim
+  either way, no three-consent process, no paralelni studij comparison (e.g. FER's 4.5 threshold), and
+  no seven-step referada/molba process. None of that is confirmed for SUJJS.
 
-What is genuinely local, and the only thing to send them to the referada for: the form, the fee, the
-deadline, and whether that course has room. Many faculties publish none of this. The Smjernice audited
-every constituent's website in 2024 and found the information mostly absent, buried or stale, so a
-missing web page is evidence about that faculty's website and not about the student's rights. Say it
-that way. If you do not know a fee or a deadline, say the faculty sets it. Do not guess a number.
+Source reliability: the confirmed text is the December 2023 Pravilnik (čl. 36-37). A newer March 2025
+"pročišćeni tekst" exists but its mobility chapter is unverified (the PDF on gfos.unios.hr is
+password-protected) — when it matters, say so and point the student to the Ured za studente or the
+faculty to confirm whether that chapter changed.
 
 ISVU answers the catalog half: omitting faculty_id from unizg_courses searches all 37 constituents at
 once, which is how you answer "where else is this taught" and "what would I actually be signing up
@@ -242,14 +246,16 @@ TOOLS = [
     },
     {
         "name": "unizg_mobility_rules",
-        "description": ("The rules for taking courses at a second UNIZG faculty (horizontalna "
-                        "mobilnost) and how it differs from paralelni studij: what the right is, the "
-                        "conditions, who approves, how ECTS get recognised, what failing costs, the "
-                        "step-by-step process, and verified official links. Static text, no network "
-                        "call. Call this for any 'can I study at two faculties / another faculty' "
-                        "question before answering, so the answer carries the actual rules and "
-                        "citations instead of guesses. Cross-faculty study IS permitted; what varies "
-                        "per faculty is only the paperwork."),
+        "description": ("The rules for taking courses at another SUJJS (Osijek) sastavnica "
+                        "(mobilnost studenata unutar Sveučilišta), čl. 36-37 of the Pravilnik "
+                        "o studijima i studiranju: what conditions govern it, who confirms "
+                        "completion, how ECTS get recognised, what capacity and costs depend "
+                        "on, and what the Pravilnik does NOT say. Static text, no network call. "
+                        "Call this for any 'can I study at another faculty' question before "
+                        "answering, so the answer carries the actual conditions instead of an "
+                        "assumed UNIZG-style unconditional right. Unlike UNIZG, this is "
+                        "conditional on the student's own programme having provided for the "
+                        "course."),
         "inputSchema": {"type": "object", "properties": {}},
     },
 ]
@@ -257,128 +263,86 @@ TOOLS = [
 # --------------------------------------------------------- horizontalna mobilnost
 # The rules half of the cross-faculty question. ISVU has none of this, and before it was written in
 # here every model got the same question wrong in one of two ways: small ones refused ("not in the
-# catalog") and larger ones affirmed but invented the fee, the deadline and the recognition rule.
-# Both readings hurt a student, so the text below is deliberately specific about what is settled
-# university-wide versus what is genuinely per-faculty. Sources are cited so answers can be checked;
-# the fuller version with per-faculty detail lives in
-# skills/unizg-courses/references/horizontalna-mobilnost.md.
+# catalog") and larger ones affirmed unconditionally, importing the UNIZG framing of an established
+# right. At SUJJS it is conditional (čl. 36 st. 1), so both readings hurt a student. The text below is
+# deliberately specific about what čl. 36-37 actually says versus what UNIZG's text says that does not
+# carry over. Sources are cited so answers can be checked; the fuller version with per-faculty detail
+# lives in skills/unizg-courses/references/horizontalna-mobilnost.md.
 
 MOBILITY_RULES = """\
-HORIZONTALNA MOBILNOST: TAKING COURSES AT ANOTHER UNIZG FACULTY
+MOBILNOST STUDENATA UNUTAR SVEUČILIŠTA JOSIPA JURJA STROSSMAYERA U OSIJEKU
 
-This is an established right, not a favour granted case by case. It is set out in the Pravilnik o
-studiranju Sveucilista u Zagrebu, article 32, and FOI's own procedure opens by saying "studentu se
-odobrava ostvarenje PRAVA na horizontalnu mobilnost". Answer the student on that footing. Never imply
-cross-faculty enrolment might not be allowed, and never send them off to find out whether it is
-possible; what they need to confirm is the paperwork.
+Ovo NIJE automatsko pravo studenta. Prema članku 36. stavku 1. Pravilnika o studijima i studiranju
+SUJJS (usvojen prosinac 2023.), student može upisati kolegije s drugog smjera, drugog studija ili
+druge sastavnice SAMO ako je te kolegije nositelj (matičnog) studija unaprijed predvidio u vlastitom
+studijskom programu. Nikad ne tvrdi studentu da ima neuvjetovano pravo na mobilnost; reci da ovisi o
+tome je li njegov studijski program to predvidio, i uputi ga da to provjeri kod nositelja studija /
+u studijskom programu.
 
-WHAT IT IS
-Official definition, Smjernice za horizontalnu mobilnost, Odbor za upravljanje kvalitetom, 19 November
-2024, KLASA 602-03/24-29/12: "Horizontalna mobilnost podrazumijeva mogucnost studenata da tijekom svog
-maticnog studija upisuje pojedine kolegije drugih studija (studijskih programa) unutar Sveucilista,
-koji se ne izvode na maticnom studiju, uz priznavanje polozenih ispita i ostvarenih bodova prema
-ECTS-u."
+IZVOR I NJEGOVA POUZDANOST — reci ovo kad je relevantno
+Postoje tri poznate verzije ovog Pravilnika: srpanj 2015. (stara, čl. 40-41, zamijenjena), prosinac
+2023. (usvojena nakon javnog savjetovanja, čl. 36-37 — OVO je tekst ispod, usvajanje potvrđeno preko
+popisa akata Pravnog fakulteta Osijek i FDMZ Osijek) i ožujak 2025. ("pročišćeni tekst" koji
+konsolidira usvojeni tekst s naknadnim izmjenama — sadržaj NIJE moguće provjeriti jer je PDF na
+gfos.unios.hr zaštićen lozinkom). Kad je pitanje takvo da se student stvarno oslanja na odgovor za
+upis, reci da postoji noviji pročišćeni tekst iz ožujka 2025. čiji sadržaj o mobilnosti nije
+verificiran, i uputi na Ured za studente ili fakultet da potvrde je li poglavlje mijenjano.
 
-You stay a normal student of your home faculty and nothing about that status changes; you additionally
-enrol, attend and sit exams in individual courses elsewhere in UNIZG. It also covers foreign-language
-courses inside UNIZG, including ones aimed at incoming exchange students. It is not Erasmus, which
-means another university entirely.
+DVA ODVOJENA KANALA (čl. 36) — ne miješaj ih
+1. "Obična" mobilnost (st. 1): pojedini kolegiji s drugog smjera/studija/sastavnice, uvjetovano time
+   da ih je nositelj matičnog studija predvidio u studijskom programu.
+2. Sveučilišni popis izbornih kolegija (st. 2): zaseban popis koji svake akademske godine, na
+   prijedlog nositelja studija, donosi Senat Sveučilišta, otvoren svim nositeljima studija na
+   Sveučilištu. Odvojen mehanizam od st. 1, ne "ista stvar drugim riječima".
 
-CONDITIONS, AND HOW FEW THERE ARE
-- The level must match: prijediplomska / diplomska / poslijediplomska. The LEVEL governs, not the type
-  of study: "mjerodavna je razina ..., a ne vrsta studija (sveucilisni, strucni)". Basis: ZVOZD art.
-  67(3), Zakon o HKO art. 7(6).
-- The course must not be taught on your own programme. That is what makes it mobility.
-- There is NO grade-average requirement at university level. Do not invent one.
-- The only real constraint is the host faculty's capacity for that course, decided by its competent
-  body on the course leader's proposal. Uptake is low university-wide ("prisutna ... ali ne u
-  znacajnijoj mjeri"), so capacity rarely binds in practice.
+PRIZNAVANJE ECTS BODOVA (čl. 36 st. 3)
+Ostvareni bodovi priznaju se kao da su ostvareni u okviru matičnog sveučilišnog studija, a bodovna
+vrijednost kolegija odgovara onoj na studiju gdje se izvodi — ili kolegij može biti upisan kao posve
+novi izborni kolegij u studentsku ispravu. Nositelj kolegija (host) potvrđuje ispunjenje obveza upisom
+ECTS bodova, ocjene i svojim potpisom u studentsku ispravu. Pravilnik ne opisuje trostruku suglasnost
+(matični program / ECTS koordinator / nositelj) kao na UNIZG-u — ne izmišljaj taj proces za Osijek;
+jedino izričito navedeno jest potpis nositelja kolegija.
 
-WHO APPROVES: three consents, and the student collects them
-1. the competent body of the student's home programme,
-2. the ECTS coordinator of the host sastavnica,
-3. the nositelj of the chosen course.
-A potvrda is then issued naming the course and fixing its ECTS value. The host course leader enters
-the grade and ECTS into the information system.
+KAPACITET (čl. 36 st. 4)
+Broj studenata koji smiju upisati pojedini izborni kolegij ograničen je kapacitetom sveučilišne
+sastavnice, o čemu odlučuje ovlašteno tijelo sastavnice na prijedlog nositelja kolegija.
 
-FAILING COSTS NOTHING
-A course taken this way carries no penalty at the home faculty if not passed, and does not damage the
-home average. Tell students this: it turns one course into a cheap experiment in a new field, and they
-do not expect it.
+TROŠKOVI (čl. 36 st. 5)
+Troškovi izvedbe kolegija u okviru mobilnosti unutar Sveučilišta određuju se Odlukom Senata —
+centraliziranim, formalnim mehanizmom (za razliku od stare verzije iz 2015. koja je to prepuštala
+"posebnom ugovoru"). Ako student pita za konkretan iznos, reci da je to regulirano Odlukom Senata
+koju treba posebno potražiti (nije dio ovog Pravilnika) — NE izmišljaj broj.
 
-ECTS RECOGNITION IS OPT-IN, TWO ROUTES
-The student starts it through their own referada, proving the credits with a certified transcript.
-- Counted toward the degree, and entered in the dopunska isprava o studiju, if the course's learning
-  outcomes match the home programme's.
-- Otherwise recognised as additional credits: recorded, but outside the degree total.
-If they never ask, the credits simply sit at the host faculty as a separate record. Do not tell a
-student the grade lands in their home programme automatically.
+MOBILNOST IZMEĐU SVEUČILIŠTA, UKLJUČUJUĆI INOZEMNU (čl. 37)
+Mobilnost studenta među hrvatskim sveučilištima i između hrvatskih i inozemnih sveučilišta uređuje se
+na temelju posebnih ugovora. Pravilnik ne daje nikakav detalj o postupku, prijavama ili rokovima.
+Ne izvodi zaključke iz ovog teksta niti ga tretiraj analogno čl. 36. Za međunarodnu/Erasmus+
+mobilnost konkretno, Sveučilište na svom popisu akata ima objavljen "Pravilnik o Erasmus+ programu
+individualne međunarodne mobilnosti odlaznih i dolaznih studenata i (ne)nastavnog osoblja u okviru
+ključne aktivnosti 1" — reci studentu da taj dokument postoji i da tamo treba tražiti proceduru; ne
+opisuj mu sadržaj, jer nije pročitan. Za mobilnost prema drugom hrvatskom sveučilištu izvan
+Erasmus+ okvira, uputi studenta na svoju sastavnicu / Ured za studente, jer Pravilnik ne daje daljnji
+detalj.
 
-VERSUS PARALELNI STUDIJ
-Paralelni studij means enrolling the entire second programme and ending with two degrees, behind a
-strict entry bar (FER's pravilnik sets a 4.5 average). Horizontalna mobilnost means picking individual
-courses, keeps one degree, and has no such bar. A student can move from horizontalna mobilnost to
-paralelni studij later, so starting with one or two courses closes nothing off.
+ŠTO NE TVRDITI (razlike od UNIZG teksta, izbjegavaj analogiju)
+- Nema formulacije "utvrđeno pravo bez uvjeta" kao UNIZG čl. 32 — Osijek uvjetuje upis time je li
+  nositelj studija to predvidio u programu.
+- Nema potvrde o (ne)postojanju uvjeta prosjeka ocjena (GPA) — Pravilnik to jednostavno ne spominje;
+  ne tvrdi ni da postoji ni da ne postoji takav uvjet.
+- Nema koncepta "tri suglasnosti" (matični program / ECTS koordinator / nositelj kolegija).
+- Nema usporedbe s "paralelni studij" ili bilo kakvim pragom prosjeka (npr. FER-ov 4.5 na UNIZG-u).
+- Nema sedmokoračnog procesa (referada, molba, potvrda o studiranju) — nije opisano u ovom Pravilniku;
+  za konkretan postupak prijave uputi na sastavnicu / Ured za studente.
 
-THE PROCESS
-1. Choose courses: browse the programmes that interest you and read the real syllabi, since much of
-   what sounds interesting turns out not to be. Order candidates by prerequisites. ISVU answers this
-   part; use the other tools here.
-2. Check it physically fits: lay the host timetable over your home one. If it does not fit, drop a
-   course or push it a year. Expect an exam collision eventually.
-3. Contact the nositelj of the course and agree how you will attend and sit the exam.
-4. Ask your own referada what they need. Some faculties require nothing of the student here.
-5. Apply to the host faculty's referada: what you want to enrol and why, a short motivation, plus a
-   potvrda o studiranju and that faculty's official molba form from its website. Some charge a small
-   fee for the molba. Forms and fees are per-faculty.
-6. Time it to the regular enrolment window. FOI requires it "prije upisa u semestar u kojem ostvaruje
-   mobilnost". Mailing the referada during normal enrolment is when they can actually enrol you.
-7. The student then appears on Studomat with two faculties.
-Transport is a real hidden cost when the two faculties are far apart, and the student bears it.
-
-WHY THE STUDENT CANNOT FIND THIS WRITTEN DOWN
-The Smjernice audited every constituent's website in 2024 and found, in the University's own words,
-that most publish no detailed enrolment conditions online, only a minority document the approval
-procedure, ECTS-recognition information is rare and buried inside pravilnici, capacity limits are
-"gotovo uopce nije dostupna online", information is often stale, and some faculties link only
-international mobility. A faculty having no page is therefore evidence about that faculty's website,
-not about the student's rights. Say it that way rather than letting the gap read as a prohibition.
-Named good practice: Farmaceutsko-biokemijski fakultet, Pravni fakultet, Fakultet organizacije i
-informatike.
-
-WHAT TO SEND THEM TO THE REFERADA FOR
-The form, the fee, the deadline, and whether that course has room. Nothing else. Not whether
-cross-faculty study is allowed, not whether they need a certain average, not whether their faculty
-"permits" it. Those are settled university-wide. If you do not know a fee or a deadline, say the
-faculty sets it and let them ask. Do not guess a number.
-
-ANSWERING IN CROATIAN
-Most students ask this in Croatian, so answer in Croatian, and copy the terms from this list rather
-than transliterating the folded spellings used above. Smaller models measurably mangle these: one
-answered "okoncana prava" (concluded rights) for an established right, wrote the Serbian "zavisi" for
-"ovisi", and leaked Cyrillic characters into a Croatian sentence. Correct forms, with diacritics:
-
-  horizontalna mobilnost · paralelni studij · matični studij · matični fakultet · sastavnica
-  kolegij · predmet · nositelj kolegija · ECTS koordinator · referada · studentska služba
-  prijediplomski · diplomski · poslijediplomski · razina studija · vrsta studija
-  položeni ispiti · priznavanje bodova · dopunska isprava o studiju · prosjek ocjena
-  potvrda o studiranju · molba · obrazac · rok · upis · kapacitet · Studomat
-  utvrđeno pravo (NOT "okončano") · ovisi o fakultetu (NOT "zavisi") · ishodi učenja
-
-Croatian uses č ć š ž đ. Do not drop them, and never mix in Cyrillic.
-
-OFFICIAL LINKS, all verified 2026-08-02
-- UNIZG central page:
-  https://www.unizg.hr/studiji-i-studiranje/upisi-stipendije-priznavanja/horizontalna-mobilnost/
-- Smjernice za horizontalnu mobilnost (PDF): https://www.unizg.hr/fileadmin/rektorat/\
-Studiji_studiranje/Studiji/Kvaliteta/Kvaliteta1/Smjernice_za_horizontalnu_mobilnost_za_web.pdf
-- FKIT, a fully worked section:
-  https://www.fkit.unizg.hr/horizontalna_mobilnost/horizontalna_mobilnost_studenata_fkit-a
-- FOI procedure: https://www.foi.unizg.hr/hr/horizontalna-mobilnost
-- Pravni fakultet, with per-year course lists in Croatian and in foreign languages:
-  https://www.pravo.unizg.hr/studiji/horizontalna-mobilnost
-Faculty URLs rot. If one 404s, say so and point at the UNIZG central page and the referada rather
-than guessing a replacement path.
+IZVOR
+Pravilnik o studijima i studiranju Sveučilišta Josipa Jurja Strossmayera u Osijeku, čl. 36-37,
+usvojen prosinac 2023. Tekst potvrđen preko nacrta iz javnog savjetovanja, rujan 2023.:
+https://www.unios.hr/wp-content/uploads/2023/09/2-NACRT-prijedloga-Pravilnika-o-studijima-i-studiranju-javno-savjetovanje-9.2023.pdf
+Usvajanje u prosincu 2023. potvrđeno preko popisa akata Pravnog fakulteta Osijek i FDMZ Osijek (oba
+navode "Pravilnik o studijima i studiranju... (prosinac 2023.)"); izravan link na usvojeni PDF nije
+bio dostupan. Postoji noviji "pročišćeni tekst" (ožujak 2025.) čiji sadržaj o mobilnosti NIJE
+verificiran (PDF na gfos.unios.hr zaštićen lozinkom) — prije oslanjanja na ovo u produkciji, provjeri
+kod Ureda za studente ili fakulteta je li poglavlje mijenjano.
 """
 
 # ---------------------------------------------------------------- helpers
