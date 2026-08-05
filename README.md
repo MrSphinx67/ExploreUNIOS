@@ -20,7 +20,8 @@ Run it:
 python3 -m http.server 8000     # then open http://localhost:8000/
 ```
 
-The default list is Molekularna biologija at PMF. Edit it, or replace it with any programme.
+The default list is Programsko inženjerstvo (preddiplomski, redovni) at FERIT, Sveučilište Josipa
+Jurja Strossmayera u Osijeku. Edit it, or replace it with any programme.
 
 **Reading the graph.** One column per semester, grouped into years. An arrow means *prerequisite to
 course*. A course sits in the first semester that is both after all its prerequisites and in its own
