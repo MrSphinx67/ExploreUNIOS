@@ -33,10 +33,14 @@ def _load_isvu():
 isvu = _load_isvu()
 
 # ---------------------------------------------------------------- instructions
+# "18 constituent faculties" is the count from _institutions() (nadredjena filter). "roughly 9,500
+# courses" is a live sum of len(isvu.course_list(i["id"])) over those 18 ids, no year param (current
+# ISVU listing), measured 2026-08-05 -> 9,501. Re-run that if this drifts noticeably; it is a snapshot,
+# not a tracked figure.
 
 INSTRUCTIONS = """\
-Read-only access to the official University of Zagreb (UNIZG) course catalog, the ISVU public data
-module that SRCE runs for the ministry. 37 constituent faculties, roughly 27,400 courses, academic
+Read-only access to the official Sveučilište Josipa Jurja Strossmayera u Osijeku (SUJJS) course catalog, the ISVU public data
+module that SRCE runs for the ministry. 18 constituent faculties, roughly 9,500 courses, academic
 years back to 1976/77.
 
 WHAT THIS IS FOR
@@ -82,7 +86,7 @@ Source reliability: the confirmed text is the December 2023 Pravilnik (čl. 36-3
 password-protected) — when it matters, say so and point the student to the Ured za studente or the
 faculty to confirm whether that chapter changed.
 
-ISVU answers the catalog half: omitting faculty_id from unizg_courses searches all 37 constituents at
+ISVU answers the catalog half: omitting faculty_id from unizg_courses searches all 18 constituents at
 once, which is how you answer "where else is this taught" and "what would I actually be signing up
 for". Do not offer to filter by teaching language: it is published for only ~12% of courses and marked
 English for ~1%, so absence carries no information.
@@ -107,10 +111,6 @@ headings such as "OCEKIVANI ISHODI UCENJA NA RAZINI PREDMETA:" (PMF) while other
 
 A course can belong to several programmes at different semesters with different obavezni/izborni
 status, so treat semester as per-programme, never as one value for the course.
-
-PMF is two separate institutions, 37 (matematicki odsjek) and 119 (prirodoslovni odsjeci). When the
-user says "PMF" search both and say which one a result came from. Institution 9996 is the central
-university entity, not an umbrella: its courses are real, separate, mostly interdisciplinary.
 
 BUILDING A PREREQUISITE GRAPH
 unizg_dag_json returns courses in the exact JSON the companion scheduler web app imports, so a user
@@ -142,9 +142,9 @@ Search matches Croatian text without diacritics, so "racunarstvo" finds "Racunar
 TOOLS = [
     {
         "name": "unizg_courses",
-        "description": ("Find courses by name across a UNIZG faculty. Diacritic-insensitive, so "
+        "description": ("Find courses by name across a SUJJS (Osijek) faculty. Diacritic-insensitive, so "
                         "'racunarstvo' matches 'Računarstvo'. Returns course codes to pass to "
-                        "unizg_course. Omit faculty_id to search all 37 constituents at once, "
+                        "unizg_course. Omit faculty_id to search all 18 constituents at once, "
                         "which takes about 15 s and is the right way to answer 'where else is "
                         "this taught'. If more matched than the limit, the result says so and "
                         "lists the count per faculty: report that, never imply completeness."),
@@ -238,7 +238,7 @@ TOOLS = [
     },
     {
         "name": "unizg_institutions",
-        "description": "The 37 UNIZG constituent faculties with their ISVU ids, cities and course counts.",
+        "description": "The 18 SUJJS (Osijek) constituent faculties with their ISVU ids, cities and course counts.",
         "inputSchema": {
             "type": "object",
             "properties": {"query": {"type": "string", "description": "Filter by name fragment."}},
@@ -396,7 +396,7 @@ def resolve_faculty(args):
     if len(hits) == 1:
         return hits[0]["id"], None
     if not hits:
-        return None, f"No UNIZG faculty matched {name!r}. Call unizg_institutions."
+        return None, f"No SUJJS faculty matched {name!r}. Call unizg_institutions."
     return None, ("Ambiguous, pick one: "
                   + "; ".join(f"{h['naziv']} (id {h['id']})" for h in hits[:10]))
 
@@ -534,7 +534,7 @@ def call_tool(name, args):
         has_faculty = args.get("faculty_id") not in (None, "") or args.get("faculty") not in (None, "")
         if not q and not has_faculty:
             return {"error": "Give a query, or a faculty to list in full. Both cannot be omitted: "
-                             "that would return all ~27,400 courses."}
+                             "that would return all ~9,500 courses."}
         if has_faculty:
             fid, err = resolve_faculty(args)
             if err:
