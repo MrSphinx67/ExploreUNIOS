@@ -5,7 +5,7 @@
 // uvjet: "polozen" = položen ispit, "odslusan" = odslušan kolegij (oba: preduvjet u ranijem semestru).
 // FERIT ne objavljuje strukturirane upisne preduvjete za ovaj program, pa su svi preduvjeti prazni.
 (function () {
-  const PMF = (window.PMF = window.PMF || {});
+  const APP = (window.APP = window.APP || {});
 
   const DEFAULT_KOLEGIJI = [
     { naziv: "Inženjerska grafika i dokumentiranje", semestar: "zimski", godina: 1, status: "obavezni", ects: 3, preduvjeti: [] },
@@ -47,7 +47,7 @@
     { naziv: "Završni rad", semestar: "ljetni", godina: 3, status: "obavezni", ects: 10, preduvjeti: [] },
   ];
 
-  PMF.data = {
+  APP.data = {
     DEFAULT_KOLEGIJI,
     SEMESTRI: ["zimski", "ljetni"],
     STATUSI: ["obavezni", "izborni"],

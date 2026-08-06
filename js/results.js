@@ -1,6 +1,6 @@
 // Rezultati: ukupne brojke + tablica (najranije vs. plan) + ECTS po semestru.
 (function () {
-  const PMF = (window.PMF = window.PMF || {});
+  const APP = (window.APP = window.APP || {});
 
   function el(tag, cls, text) {
     const e = document.createElement(tag);
@@ -99,5 +99,5 @@
     mount.appendChild(loadbars(schedule));
   }
 
-  PMF.results = { render };
+  APP.results = { render };
 })();

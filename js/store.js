@@ -1,6 +1,6 @@
 // Pohrana popisa kolegija u localStorage (bez backenda).
 (function () {
-  const PMF = (window.PMF = window.PMF || {});
+  const APP = (window.APP = window.APP || {});
   const KEY = "kolegiji_v1";
 
   function clone(list) {
@@ -10,12 +10,12 @@
   function load() {
     try {
       const raw = window.localStorage.getItem(KEY);
-      if (!raw) return clone(PMF.data.DEFAULT_KOLEGIJI);
+      if (!raw) return clone(APP.data.DEFAULT_KOLEGIJI);
       const parsed = JSON.parse(raw);
-      if (!Array.isArray(parsed)) return clone(PMF.data.DEFAULT_KOLEGIJI);
+      if (!Array.isArray(parsed)) return clone(APP.data.DEFAULT_KOLEGIJI);
       return parsed;
     } catch {
-      return clone(PMF.data.DEFAULT_KOLEGIJI);
+      return clone(APP.data.DEFAULT_KOLEGIJI);
     }
   }
 
@@ -33,7 +33,7 @@
     } catch {
       // ignore
     }
-    return clone(PMF.data.DEFAULT_KOLEGIJI);
+    return clone(APP.data.DEFAULT_KOLEGIJI);
   }
 
   // Osnovna validacija oblika uvezenih podataka.
@@ -75,5 +75,5 @@
     });
   }
 
-  PMF.store = { KEY, load, save, reset, normalizeImported };
+  APP.store = { KEY, load, save, reset, normalizeImported };
 })();

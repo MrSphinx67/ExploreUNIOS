@@ -517,10 +517,12 @@ def call_tool(name, args):
 
     if name == "unios_mobility_rules":
         return {"rules": MOBILITY_RULES,
-                "reminder": ("Cross-faculty study is permitted university-wide. Only the form, the "
-                             "fee, the deadline and course capacity are per-faculty. Do not tell the "
-                             "student to check whether it is allowed, and do not guess a fee or "
-                             "deadline.")}
+                "reminder": ("This is conditional, not an established right: čl. 36(1) requires the "
+                             "student's own nositelj studija to have already provided for the course "
+                             "in the studijski program. Tell the student to check that first, then "
+                             "the form, fee, deadline and capacity are what's left for the referada. "
+                             "Do not guess a fee or a deadline, and do not carry over UNIZG's "
+                             "unconditional-right framing.")}
 
     if name == "unios_institutions":
         res = _institutions()

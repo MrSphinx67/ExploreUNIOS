@@ -1,7 +1,7 @@
 // Logika rasporeda kolegija, čisti JS, radi u pregledniku (bez backenda).
 // Port skripte kolegiji_dag/raspored.py (model "compress": lanac preduvjeta + sezona).
 (function () {
-  const PMF = (window.PMF = window.PMF || {});
+  const APP = (window.APP = window.APP || {});
 
   function prereqList(course) {
     return (course.preduvjeti || []).map((p) =>
@@ -193,7 +193,7 @@
     return seen;
   }
 
-  PMF.schedule = {
+  APP.schedule = {
     prereqList,
     prereqNames,
     nominalSemester,

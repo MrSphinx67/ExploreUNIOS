@@ -1,6 +1,6 @@
 // Bootstrap: jedinstveno stanje, orkestracija prikaza, alatna traka. Učitava se zadnji.
 (function () {
-  const PMF = (window.PMF = window.PMF || {});
+  const APP = (window.APP = window.APP || {});
 
   const state = { courses: [] };
 
@@ -17,13 +17,13 @@
   });
 
   function save() {
-    PMF.store.save(state.courses);
+    APP.store.save(state.courses);
   }
 
   function renderDerived() {
-    const schedule = PMF.schedule.computeSchedule(state.courses);
-    PMF.graph.render(graphEl, schedule, state.courses, { onPin });
-    PMF.results.render(resultsEl, schedule);
+    const schedule = APP.schedule.computeSchedule(state.courses);
+    APP.graph.render(graphEl, schedule, state.courses, { onPin });
+    APP.results.render(resultsEl, schedule);
     if (countEl) countEl.textContent = String(state.courses.length);
   }
 
@@ -54,7 +54,7 @@
   }
 
   function rebuildEditor(opts) {
-    PMF.editor.render(editorEl, state.courses, handlers, opts);
+    APP.editor.render(editorEl, state.courses, handlers, opts);
   }
 
   const handlers = {
@@ -120,19 +120,19 @@
 
   // Zajednički put za uvoz iz datoteke i iz zalijepljenog teksta.
   function loadFromText(text) {
-    const list = PMF.store.normalizeImported(JSON.parse(text));
+    const list = APP.store.normalizeImported(JSON.parse(text));
     state.courses = list;
     save();
     rebuildEditor({ resetOpen: true });
     renderDerived();
-    PMF.ui.toast(`Uvezeno ${list.length} kolegija.`, "success");
+    APP.ui.toast(`Uvezeno ${list.length} kolegija.`, "success");
   }
 
   async function doImport(file, inputEl) {
     try {
       loadFromText(await file.text());
     } catch (err) {
-      PMF.ui.toast(`Greška pri uvozu: ${err.message}`, "error");
+      APP.ui.toast(`Greška pri uvozu: ${err.message}`, "error");
     } finally {
       if (inputEl) inputEl.value = "";
     }
@@ -147,20 +147,20 @@
 
   function doPaste() {
     const raw = $("paste-json").value.trim();
-    if (!raw) return PMF.ui.toast("Prazno polje: zalijepi JSON.", "error");
+    if (!raw) return APP.ui.toast("Prazno polje: zalijepi JSON.", "error");
     try {
       loadFromText(raw);
       togglePaste(false);
     } catch (err) {
-      PMF.ui.toast(`Greška pri uvozu: ${err.message}`, "error");
+      APP.ui.toast(`Greška pri uvozu: ${err.message}`, "error");
     }
   }
 
   function doReset() {
-    state.courses = PMF.store.reset();
+    state.courses = APP.store.reset();
     rebuildEditor({ resetOpen: true });
     renderDerived();
-    PMF.ui.toast("Vraćeno na zadani popis.", "info");
+    APP.ui.toast("Vraćeno na zadani popis.", "info");
   }
 
   function wireToolbar() {
@@ -187,7 +187,7 @@
     resultsEl = $("results");
     countEl = $("course-count");
 
-    state.courses = PMF.store.load();
+    state.courses = APP.store.load();
     rebuildEditor();
     renderDerived();
     wireToolbar();

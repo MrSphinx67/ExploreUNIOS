@@ -1,7 +1,7 @@
 // Uređivač kolegija, čisti DOM + delegacija događaja. Bez okvira.
 // Uređivanje vrijednosti NE ruši DOM (fokus/kursor ostaju); strukturne promjene ga grade nanovo.
 (function () {
-  const PMF = (window.PMF = window.PMF || {});
+  const APP = (window.APP = window.APP || {});
 
   let openSet = new Set(); // indeksi otvorenih kartica (preživi strukturne rebuild-ove)
 
@@ -91,14 +91,14 @@
     body.appendChild(labeled("Naziv", naziv));
 
     const grid = el("div", "field-grid");
-    grid.appendChild(labeled("Semestar", select("semestar", PMF.data.SEMESTRI, c.semestar)));
+    grid.appendChild(labeled("Semestar", select("semestar", APP.data.SEMESTRI, c.semestar)));
     const god = el("input");
     god.type = "number";
     god.min = "1";
     god.dataset.field = "godina";
     god.value = c.godina;
     grid.appendChild(labeled("Godina", god));
-    grid.appendChild(labeled("Status", select("status", PMF.data.STATUSI, c.status)));
+    grid.appendChild(labeled("Status", select("status", APP.data.STATUSI, c.status)));
     const ects = el("input");
     ects.type = "number";
     ects.min = "0";
@@ -127,7 +127,7 @@
       row.dataset.pi = String(pi);
       const ks = select("prereq-kolegij", otherNames, val.kolegij, { placeholder: ", odaberi, " });
       ks.classList.add("prereq__kolegij");
-      const us = select("prereq-uvjet", PMF.data.UVJETI, val.uvjet || "polozen");
+      const us = select("prereq-uvjet", APP.data.UVJETI, val.uvjet || "polozen");
       us.classList.add("prereq__uvjet");
       const rm = el("button", "icon-btn", "✕");
       rm.type = "button";
@@ -218,5 +218,5 @@
     });
   }
 
-  PMF.editor = { render };
+  APP.editor = { render };
 })();

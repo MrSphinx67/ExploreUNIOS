@@ -1,6 +1,6 @@
 // Minimalni toast (zamjena za React Toast). Bez ovisnosti.
 (function () {
-  const PMF = (window.PMF = window.PMF || {});
+  const APP = (window.APP = window.APP || {});
 
   function container() {
     let el = document.getElementById("toasts");
@@ -34,5 +34,5 @@
     requestAnimationFrame(() => el.classList.add("toast--in"));
   }
 
-  PMF.ui = { toast };
+  APP.ui = { toast };
 })();

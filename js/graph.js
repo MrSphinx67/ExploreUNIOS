@@ -1,7 +1,7 @@
 // Prikaz DAG-a preduvjeta u D3/SVG. Statičan raspored po stupcima (semestrima),
 // s godišnjim pojasom na vrhu. Kolegiji bez preduvjeta mogu se povući u kasniji semestar.
 (function () {
-  const PMF = (window.PMF = window.PMF || {});
+  const APP = (window.APP = window.APP || {});
   const SVGNS = "http://www.w3.org/2000/svg";
   const XHTML = "http://www.w3.org/1999/xhtml";
 
@@ -201,7 +201,7 @@
     }
 
     // koji kolegiji nemaju preduvjete (samo se oni mogu povlačiti)
-    const noPrereq = new Set(courses.filter((k) => PMF.schedule.prereqNames(k).length === 0).map((k) => k.naziv));
+    const noPrereq = new Set(courses.filter((k) => APP.schedule.prereqNames(k).length === 0).map((k) => k.naziv));
 
     // ── čvorovi (kartice) ──
     for (const k of courses) {
@@ -236,7 +236,7 @@
       }
       // Ističemo samo preduvjete (uzvodni lanac), ne i kolegije koji ovise o ovome (nizvodno).
       const chain = new Set([naziv]);
-      PMF.schedule.ancestorsOf(naziv, courses).forEach((n) => chain.add(n));
+      APP.schedule.ancestorsOf(naziv, courses).forEach((n) => chain.add(n));
       svg.classList.add("has-hover");
       for (const [n, el] of nodeEls) {
         const inChain = chain.has(n);
@@ -333,5 +333,5 @@
     mount.appendChild(svg);
   }
 
-  PMF.graph = { render };
+  APP.graph = { render };
 })();

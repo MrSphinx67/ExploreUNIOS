@@ -549,19 +549,19 @@ def cmd_selfcheck(a):
     """The three JSON endpoints are undocumented internals. Fail loudly if they move."""
     ok = True
     try:
-        lv = json.loads(fetch("/podaci/36/dohvatirazine/2025", ttl=0))
+        lv = json.loads(fetch("/podaci/165/dohvatirazine/2025", ttl=0))
         assert isinstance(lv, list) and "sifraRazine" in lv[0], "dohvatirazine shape"
-        md = json.loads(fetch("/podaci/36/razina/3/dohvatiizvedbe/2025", ttl=0))
+        md = json.loads(fetch("/podaci/165/razina/3/dohvatiizvedbe/2025", ttl=0))
         assert isinstance(md, list) and "oznaka" in md[0], "dohvatiizvedbe shape"
-        st = json.loads(fetch("/podaci/36/razina/3/izvedba/R/akgodina/2025", ttl=0))
+        st = json.loads(fetch("/podaci/165/razina/3/izvedba/R/akgodina/2025", ttl=0))
         assert isinstance(st, list) and "sifraSmjera" in st[0], "programme tree shape"
         print("JSON endpoints OK:", len(lv), "levels,", len(md), "modes,", len(st), "studies")
     except Exception as e:
         ok = False
         print("JSON endpoint CHANGED:", e)
-    n = len(course_list(36))
-    print(f"course list OK: FER has {n} courses" if n > 500 else f"course list SUSPECT: {n}")
-    doc = fetch("/podaci/36/akademskagodina/2025/predmeti/predmet/183357", ttl=0)
+    n = len(course_list(165))
+    print(f"course list OK: FERIT has {n} courses" if n > 500 else f"course list SUSPECT: {n}")
+    doc = fetch("/podaci/165/akademskagodina/2025/predmeti/predmet/213725", ttl=0)
     for lab in ("Predmet u nastavnom programu", "ECTS bodovi"):
         print(("field present: " if lab in doc else "field MISSING: ") + lab)
         ok &= lab in doc
