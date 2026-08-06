@@ -1,22 +1,25 @@
 cff-version: 1.2.0
-title: "explore_unizg: a prerequisite-graph course scheduler and an MCP server for the UNIZG course catalog"
+title: "explore_unios: a prerequisite-graph course scheduler and an MCP server for the SUJJS (Osijek) course catalog"
 message: "If you use this software or its data extraction approach, please cite it."
 type: software
 authors:
   - family-names: Pitlović
     given-names: Fabijan
     # email / affiliation / ORCID: add when finalizing
+  - family-names: Mostarkić
+    given-names: Fran
 repository-code: "https://github.com/pitfa19/explore_unizg"
-url: "https://horizontal-mobility.vercel.app"
+url: "https://explore-unios.vercel.app"
 abstract: >-
-  Two tools for planning studies at the University of Zagreb. A browser app models a study
-  programme as a prerequisite DAG and computes the earliest possible completion, respecting
-  both prerequisite depth and the winter/summer season a course is taught in. An MCP server
-  and Agent Skill give a language model read-only access to the ISVU public course catalog,
-  covering all 37 UNIZG constituents and roughly 27,400 courses back to 1976/77, and can
-  export a programme in the scheduler's import format.
+  Two tools for planning studies at Sveučilište Josipa Jurja Strossmayera u Osijeku (SUJJS). A
+  browser app models a study programme as a prerequisite DAG and computes the earliest possible
+  completion, respecting both prerequisite depth and the winter/summer season a course is taught
+  in. An MCP server and Agent Skill give a language model read-only access to the ISVU public
+  course catalog, covering all 18 SUJJS constituents and roughly 9,500 courses, and can export a
+  programme in the scheduler's import format.
 keywords:
-  - University of Zagreb
+  - University of Osijek
+  - SUJJS
   - ISVU
   - course catalog
   - curriculum

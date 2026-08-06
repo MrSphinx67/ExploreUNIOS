@@ -11,3 +11,4 @@ __pycache__/
 # Local agent config, not shipped
 .serena/
 CLAUDE.md
+.claude/settings.local.json
