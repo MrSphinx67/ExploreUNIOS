@@ -2,7 +2,7 @@
 
 Imported by api/mcp.py (remote HTTP, for the Claude web and mobile apps) and by
 mcp/stdio_server.py (local stdio, for Claude Desktop and Claude Code). Depends only
-on the stdlib plus the ISVU client in skills/unizg-courses/scripts/isvu.py.
+on the stdlib plus the ISVU client in skills/unios-courses/scripts/isvu.py.
 """
 import importlib.util
 import json
@@ -13,8 +13,8 @@ os.environ.setdefault("ISVU_CACHE", "/tmp/isvu-cache")   # serverless: only /tmp
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _CANDIDATES = [
-    os.path.join(_HERE, "..", "skills", "unizg-courses", "scripts", "isvu.py"),
-    os.path.join(_HERE, "skills", "unizg-courses", "scripts", "isvu.py"),
+    os.path.join(_HERE, "..", "skills", "unios-courses", "scripts", "isvu.py"),
+    os.path.join(_HERE, "skills", "unios-courses", "scripts", "isvu.py"),
     os.path.join(_HERE, "_isvu.py"),
 ]
 
@@ -55,7 +55,7 @@ enrol courses from another smjer, another study, or another sastavnica ONLY if t
 nositelj studija has already provided for it in that programme's studijski program. Never answer as
 though this is an unconditional right the way UNIZG frames it; say it depends on whether the home
 programme has provided for it, and point the student to their nositelj studija / studijski program to
-check. Call unizg_mobility_rules for the full briefing with citations; the essentials:
+check. Call unios_mobility_rules for the full briefing with citations; the essentials:
 
 - What it is: two separate channels under članak 36. (1) individual courses from another smjer/study/
   sastavnica, conditional on the course's own nositelj having provided for it in the programme; (2) a
@@ -86,7 +86,7 @@ Source reliability: the confirmed text is the December 2023 Pravilnik (čl. 36-3
 password-protected) — when it matters, say so and point the student to the Ured za studente or the
 faculty to confirm whether that chapter changed.
 
-ISVU answers the catalog half: omitting faculty_id from unizg_courses searches all 18 constituents at
+ISVU answers the catalog half: omitting faculty_id from unios_courses searches all 18 constituents at
 once, which is how you answer "where else is this taught" and "what would I actually be signing up
 for". Do not offer to filter by teaching language: it is published for only ~12% of courses and marked
 English for ~1%, so absence carries no information.
@@ -113,7 +113,7 @@ A course can belong to several programmes at different semesters with different 
 status, so treat semester as per-programme, never as one value for the course.
 
 BUILDING A PREREQUISITE GRAPH
-unizg_dag_json returns courses in the exact JSON the companion scheduler web app imports, so a user
+unios_dag_json returns courses in the exact JSON the companion scheduler web app imports, so a user
 can paste it straight in and get a prerequisite DAG with an earliest-completion schedule. Offer this
 whenever someone asks to plan or visualise what leads to a course.
 
@@ -141,11 +141,11 @@ Search matches Croatian text without diacritics, so "racunarstvo" finds "Racunar
 
 TOOLS = [
     {
-        "name": "unizg_courses",
+        "name": "unios_courses",
         "description": ("Find courses by name across a SUJJS (Osijek) faculty. Diacritic-insensitive, so "
                         "'racunarstvo' matches 'Računarstvo'. Returns course codes to pass to "
-                        "unizg_course. Omit faculty_id to search all 18 constituents at once, "
-                        "which takes about 15 s and is the right way to answer 'where else is "
+                        "unios_course. Omit faculty_id to search all 18 constituents at once, "
+                        "which takes about 6 s and is the right way to answer 'where else is "
                         "this taught'. If more matched than the limit, the result says so and "
                         "lists the count per faculty: report that, never imply completeness."),
         "inputSchema": {
@@ -161,7 +161,7 @@ TOOLS = [
         },
     },
     {
-        "name": "unizg_course",
+        "name": "unios_course",
         "description": ("Full detail for one course: description, learning outcomes (inside the "
                         "description), required and recommended literature, ECTS, workload, "
                         "prerequisites, and every programme it belongs to with its semester and "
@@ -171,16 +171,16 @@ TOOLS = [
             "properties": {
                 "faculty_id": {"type": "integer"},
                 "faculty": {"type": "string", "description": "Faculty name or abbreviation, instead of the id."},
-                "code": {"type": "string", "description": "ISVU course code (sifra), from unizg_courses."},
+                "code": {"type": "string", "description": "ISVU course code (sifra), from unios_courses."},
                 "year": {"type": "integer"},
             },
             "required": ["code"],
         },
     },
     {
-        "name": "unizg_programmes",
+        "name": "unios_programmes",
         "description": ("List a faculty's study programmes and modules, with their level, delivery "
-                        "mode and the ids needed by unizg_curriculum and unizg_dag_json. Only "
+                        "mode and the ids needed by unios_curriculum and unios_dag_json. Only "
                         "entries with has_curriculum true can be expanded."),
         "inputSchema": {
             "type": "object",
@@ -192,7 +192,7 @@ TOOLS = [
         },
     },
     {
-        "name": "unizg_curriculum",
+        "name": "unios_curriculum",
         "description": ("One study programme laid out semester by semester: mandatory courses plus "
                         "each elective group with the minimum ECTS you must choose from it."),
         "inputSchema": {
@@ -200,16 +200,16 @@ TOOLS = [
             "properties": {
                 "faculty_id": {"type": "integer"},
                 "faculty": {"type": "string", "description": "Faculty name or abbreviation, instead of the id."},
-                "razina": {"type": "integer", "description": "Study level code from unizg_programmes."},
+                "razina": {"type": "integer", "description": "Study level code from unios_programmes."},
                 "izvedba": {"type": "string", "description": "Delivery mode code, usually 'R'."},
-                "smjer": {"type": "integer", "description": "Programme id from unizg_programmes."},
+                "smjer": {"type": "integer", "description": "Programme id from unios_programmes."},
                 "year": {"type": "integer"},
             },
             "required": ["razina", "izvedba", "smjer"],
         },
     },
     {
-        "name": "unizg_dag_json",
+        "name": "unios_dag_json",
         "description": ("Export courses as the JSON the scheduler web app imports, to build a "
                         "prerequisite DAG and an earliest-completion schedule. Hand the user the "
                         "JSON verbatim in a fenced block and tell them to paste it into the app's "
@@ -237,7 +237,7 @@ TOOLS = [
         },
     },
     {
-        "name": "unizg_institutions",
+        "name": "unios_institutions",
         "description": "The 18 SUJJS (Osijek) constituent faculties with their ISVU ids, cities and course counts.",
         "inputSchema": {
             "type": "object",
@@ -245,7 +245,7 @@ TOOLS = [
         },
     },
     {
-        "name": "unizg_mobility_rules",
+        "name": "unios_mobility_rules",
         "description": ("The rules for taking courses at another SUJJS (Osijek) sastavnica "
                         "(mobilnost studenata unutar Sveučilišta), čl. 36-37 of the Pravilnik "
                         "o studijima i studiranju: what conditions govern it, who confirms "
@@ -267,7 +267,7 @@ TOOLS = [
 # right. At SUJJS it is conditional (čl. 36 st. 1), so both readings hurt a student. The text below is
 # deliberately specific about what čl. 36-37 actually says versus what UNIZG's text says that does not
 # carry over. Sources are cited so answers can be checked; the fuller version with per-faculty detail
-# lives in skills/unizg-courses/references/horizontalna-mobilnost.md.
+# lives in skills/unios-courses/references/horizontalna-mobilnost.md.
 
 MOBILITY_RULES = """\
 MOBILNOST STUDENATA UNUTAR SVEUČILIŠTA JOSIPA JURJA STROSSMAYERA U OSIJEKU
@@ -348,7 +348,7 @@ kod Ureda za studente ili fakulteta je li poglavlje mijenjano.
 # ---------------------------------------------------------------- helpers
 
 
-def _institutions(unizg_only=True):
+def _institutions(unios_only=True):
     doc = isvu.fetch("/pretrazivanje")
     import re
     out = []
@@ -358,7 +358,7 @@ def _institutions(unizg_only=True):
         if idm and len(cells) >= 3:
             out.append({"id": int(idm.group(1)), "naziv": cells[0],
                         "nadredjena": cells[1], "grad": cells[2]})
-    if unizg_only:
+    if unios_only:
         out = [x for x in out if "Sveučilište Josipa Jurja Strossmayera u Osijeku" in x["nadredjena"]]
     return out
 
@@ -388,7 +388,7 @@ def resolve_faculty(args):
     if name.isdigit():
         return int(name), None
     if not name:
-        return None, "Give faculty_id or faculty. Call unizg_institutions to list them."
+        return None, "Give faculty_id or faculty. Call unios_institutions to list them."
     key = isvu.fold(name)
     if key in ALIASES:
         return ALIASES[key], None
@@ -396,7 +396,7 @@ def resolve_faculty(args):
     if len(hits) == 1:
         return hits[0]["id"], None
     if not hits:
-        return None, f"No SUJJS faculty matched {name!r}. Call unizg_institutions."
+        return None, f"No SUJJS faculty matched {name!r}. Call unios_institutions."
     return None, ("Ambiguous, pick one: "
                   + "; ".join(f"{h['naziv']} (id {h['id']})" for h in hits[:10]))
 
@@ -515,21 +515,21 @@ def call_tool(name, args):
         return {"error": bad}
     year = int(args.get("year") or 2025)
 
-    if name == "unizg_mobility_rules":
+    if name == "unios_mobility_rules":
         return {"rules": MOBILITY_RULES,
                 "reminder": ("Cross-faculty study is permitted university-wide. Only the form, the "
                              "fee, the deadline and course capacity are per-faculty. Do not tell the "
                              "student to check whether it is allowed, and do not guess a fee or "
                              "deadline.")}
 
-    if name == "unizg_institutions":
+    if name == "unios_institutions":
         res = _institutions()
         q = args.get("query")
         if q:
             res = [x for x in res if isvu.fold(q) in isvu.fold(x["naziv"])]
         return {"count": len(res), "institutions": res}
 
-    if name == "unizg_courses":
+    if name == "unios_courses":
         q = str(args.get("query") or "").strip()
         has_faculty = args.get("faculty_id") not in (None, "") or args.get("faculty") not in (None, "")
         if not q and not has_faculty:
@@ -583,7 +583,7 @@ def call_tool(name, args):
             out["faculties_matched"] = len(per_faculty)
         return out
 
-    if name == "unizg_course":
+    if name == "unios_course":
         fid, err = resolve_faculty(args)
         if err:
             return {"error": err}
@@ -622,7 +622,7 @@ def call_tool(name, args):
                        f"/predmeti/predmet/{code}"),
         }
 
-    if name == "unizg_programmes":
+    if name == "unios_programmes":
         fid, err = resolve_faculty(args)
         if err:
             return {"error": err}
@@ -642,22 +642,22 @@ def call_tool(name, args):
                                 "studiji": _flatten(studies, [])})
         return {"faculty_id": fid, "akademskaGodina": year, "razine": out}
 
-    if name in ("unizg_curriculum", "unizg_dag_json"):
+    if name in ("unios_curriculum", "unios_dag_json"):
         fid, err = resolve_faculty(args)
         if err:
             return {"error": err}
         for k in ("razina", "izvedba", "smjer"):
             if args.get(k) in (None, ""):
-                return {"error": f"Missing {k}. Call unizg_programmes for this faculty first."}
+                return {"error": f"Missing {k}. Call unios_programmes for this faculty first."}
         path = (f"/podaci/{fid}/nastavniprogram/{year}/razina/{int(args['razina'])}"
                 f"/izvedba/{args['izvedba']}/smjer/{int(args['smjer'])}")
         doc = isvu.fetch(path)
         sems = isvu.split_semesters(doc)
         if not sems:
             return {"error": ("No curriculum published for that programme. Check "
-                              "has_curriculum in unizg_programmes.")}
+                              "has_curriculum in unios_programmes.")}
 
-        if name == "unizg_curriculum":
+        if name == "unios_curriculum":
             out = []
             for sem, chunk in sems:
                 entry = {"semestar": sem, "obavezni": [], "izborne_grupe": []}
@@ -784,7 +784,7 @@ def handle_rpc(msg):
         return ok({
             "protocolVersion": params.get("protocolVersion", "2025-06-18"),
             "capabilities": {"tools": {}},
-            "serverInfo": {"name": "unizg-courses", "version": "1.0.0"},
+            "serverInfo": {"name": "unios-courses", "version": "1.0.0"},
             "instructions": INSTRUCTIONS,
         })
     if method in ("notifications/initialized", "notifications/cancelled"):

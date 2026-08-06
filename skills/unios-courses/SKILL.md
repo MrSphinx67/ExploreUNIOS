@@ -1,21 +1,22 @@
 ---
-name: unizg-courses
+name: unios-courses
 description: >-
-  Look up University of Zagreb (UNIZG) courses, curricula, syllabi and course literature from the
-  official ISVU public catalog. Use whenever the user asks what a UNIZG course covers, its ECTS or
-  semester or workload, its prerequisites (preduvjeti), its required or recommended reading
-  (literatura), which courses a study programme contains, what is taught at a given faculty, which
-  courses are taught in English, how a curriculum has changed over the years, or how the same
-  subject is taught at different UNIZG faculties. Also use for any question about studying at a
-  second UNIZG faculty alongside your own: horizontalna mobilnost, taking or enrolling individual
-  courses at another faculty, whether that is allowed and what the conditions are, how ECTS get
-  recognised, and how it differs from paralelni studij. Covers all 37 UNIZG constituents and ~27,400
-  courses. Croatian terms that should trigger this: kolegij, predmet, preduvjeti, ishodi ucenja,
-  nastavni program, studijski program, ECTS, semestar, literatura, sastavnica, horizontalna
-  mobilnost, paralelni studij, dva fakulteta, drugi faks, referada, molba, priznavanje ECTS-a.
+  Look up Sveučilište Josipa Jurja Strossmayera u Osijeku (SUJJS) courses, curricula, syllabi and
+  course literature from the official ISVU public catalog. Use whenever the user asks what a SUJJS
+  (Osijek) course covers, its ECTS or semester or workload, its prerequisites (preduvjeti), its
+  required or recommended reading (literatura), which courses a study programme contains, what is
+  taught at a given faculty, which courses are taught in English, how a curriculum has changed over
+  the years, or how the same subject is taught at different SUJJS (Osijek) faculties. Also use for
+  any question about studying at a second SUJJS (Osijek) faculty alongside your own: horizontalna
+  mobilnost, taking or enrolling individual courses at another sastavnica, whether that is allowed
+  and what the conditions are, how ECTS get recognised, and how it differs from paralelni studij.
+  Covers all 18 SUJJS (Osijek) constituents and roughly 9,500 courses. Croatian terms that should
+  trigger this: kolegij, predmet, preduvjeti, ishodi ucenja, nastavni program, studijski program,
+  ECTS, semestar, literatura, sastavnica, horizontalna mobilnost, paralelni studij, dva fakulteta,
+  drugi faks, referada, molba, priznavanje ECTS-a.
 ---
 
-# UNIZG course catalog (ISVU)
+# SUJJS (Osijek) course catalog (ISVU)
 
 Queries the ISVU public data module, the official catalog SRCE runs for the ministry. It is the same
 database the student offices use, exposed read-only, server-rendered, no auth. `robots.txt` is
@@ -43,12 +44,12 @@ and all the parsing traps below. Prefer it over hand-rolling requests.
 ```bash
 export ISVU_CONTACT="you@example.com"      # goes in the User-Agent; set it
 
-python3 scripts/isvu.py institutions --unizg          # 37 constituents + their ids
-python3 scripts/isvu.py courses 36 --search racunarstvo --limit 20
-python3 scripts/isvu.py course 119 63146              # detail: opis, literatura, preduvjeti, programmes
-python3 scripts/isvu.py programmes 54                 # programme/module tree
-python3 scripts/isvu.py curriculum 54 3 R 2           # one programme, by semester
-python3 scripts/isvu.py dag 54 3 R 2                  # export in the scheduler's kolegiji.json schema
+python3 scripts/isvu.py institutions --unios          # 18 constituents + their ids
+python3 scripts/isvu.py courses 165 --search racunarstvo --limit 20
+python3 scripts/isvu.py course 165 63146              # detail: opis, literatura, preduvjeti, programmes
+python3 scripts/isvu.py programmes 165                # programme/module tree
+python3 scripts/isvu.py curriculum 165 3 R 67         # one programme, by semester
+python3 scripts/isvu.py dag 165 3 R 67                # export in the scheduler's kolegiji.json schema
 python3 scripts/isvu.py selfcheck                     # verify the undocumented endpoints still work
 ```
 
@@ -59,10 +60,11 @@ and could move without notice.
 Institution ids, course counts and per-faculty data-coverage figures: `references/institutions.md`.
 Read that before telling a user a field is empty, because at many faculties it never got filled in.
 
-The rules for taking courses at a second UNIZG faculty: `references/horizontalna-mobilnost.md`. **Read
-that before answering any question about studying at two faculties**, because ISVU holds none of it and
-the answer is "yes, this is an established right" — a student who gets hedged at here is being
-misinformed, not protected.
+The rules for taking courses at a second SUJJS (Osijek) faculty: `references/horizontalna-mobilnost.md`.
+**Read that before answering any question about studying at two faculties**, because ISVU holds none of
+it, and unlike UNIZG this is not an unconditional right: čl. 36(1) of the Pravilnik o studijima i
+studiranju SUJJS conditions enrolment on the student's own nositelj studija having already provided for
+that course in the studijski program. Say so rather than assuming a blanket right either way.
 
 ## Endpoints
 
@@ -107,9 +109,9 @@ than looking for a fixed list.** That is how the two prerequisite fields get mis
 
 **Prerequisites do exist in ISVU**, as `Preduvjeti za upis predmeta` and
 `Preduvjeti za polaganje predmeta`. Format is `Course name (položen)` / `Course name (odslušan)`,
-which maps onto `polozen` / `odslusan`. Coverage is thin (~10% and ~4% of courses) but spread over
-22 of 37 faculties. Absent is not the same as none: many courses genuinely have no prerequisites,
-and many faculties simply never filled the field.
+which maps onto `polozen` / `odslusan`. Coverage is thin (~10% and ~4% of courses) and spread
+unevenly across the 18 SUJJS (Osijek) faculties. Absent is not the same as none: many courses
+genuinely have no prerequisites, and many faculties simply never filled the field.
 
 **Course list column order is `Naziv` then `Šifra`**, name first. The per-course hrefs sit *outside*
 the `<tr>` elements, and some institutions link course names while others do not, so read the code
@@ -160,7 +162,11 @@ Never guess `semestar` to make a schedule look tighter: it changes the answer.
 
 ## Coverage honesty
 
-Measured over 370 sampled courses across all 37 constituents:
+Measured over 370 sampled courses across all 37 UNIZG constituents (this skill's original scope,
+before it was pointed at SUJJS/Osijek's 18). The percentages below are carried over as directionally
+right and are what `api/_core.py`'s INSTRUCTIONS currently state for Osijek too; they have not been
+re-measured against the 18 SUJJS constituents specifically, so treat them as an estimate pending a
+fresh sample:
 
 | field | coverage |
 |---|---|
@@ -187,15 +193,17 @@ missing, say the faculty did not publish it rather than implying the course lack
 - prerequisites, where the faculty published them
 - comparing how several faculties teach the same subject, since course lists span all constituents
 - **horizontalna mobilnost, both halves.** The catalog half: omit
-  `faculty_id` from `courses` to search all 37 constituents at once (one page per faculty, fetched
-  concurrently, about 15 s), then read the syllabus, ECTS, workload and semester of anything promising.
+  `faculty_id` from `courses` to search all 18 constituents at once (one page per faculty, fetched
+  concurrently, about 6 s), then read the syllabus, ECTS, workload and semester of anything promising.
   A truncated result reports `total_matches` and `matches_per_faculty`; pass those on rather than
-  presenting the first page as the whole answer. The rules half is not in ISVU but it *is* settled, and
-  it is written up in `references/horizontalna-mobilnost.md` — **read that before answering any
-  "can I take courses at another faculty" question.** Short version: it is an established right under
-  the Pravilnik o studiranju article 32, there is no grade-average requirement, failing costs nothing
-  at the home faculty, and only the form, the fee, the deadline and course capacity are per-faculty.
-  Do **not** answer as though it might not be permitted, and do **not** invent a fee or a deadline.
+  presenting the first page as the whole answer. The rules half is not in ISVU, and it is written up in
+  `references/horizontalna-mobilnost.md` — **read that before answering any "can I take courses at
+  another faculty" question.** Short version: unlike UNIZG, this is NOT an unconditional right —
+  čl. 36(1) of the Pravilnik o studijima i studiranju SUJJS conditions it on the student's own nositelj
+  studija having already provided for that course in the studijski program, the Pravilnik does not
+  confirm or deny a grade-average requirement either way, and only the form, the fee, the deadline and
+  course capacity are settled per-faculty. Do **not** answer as though it were an established right the
+  way UNIZG frames it, and do **not** invent a fee or a deadline.
   Do **not** offer to filter by language of instruction: `Jezici izvođenja nastave` is published for
   ~12% of courses and marked English for ~1% (measured over 120 courses at 10 faculties), and it is
   concentrated, VEF fills it on every course, most faculties on none. An absent value says nothing

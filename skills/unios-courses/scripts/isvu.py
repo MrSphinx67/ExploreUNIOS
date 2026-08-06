@@ -13,7 +13,7 @@ PROJECT_URL = "https://github.com/pitfa19/explore_unizg"
 # Works with no configuration. Set ISVU_CONTACT to add a reachable address, which
 # is the courteous thing to do for anything beyond occasional lookups.
 CONTACT = os.environ.get("ISVU_CONTACT", "").strip()
-UA = (f"unizg-courses/1.0 (+{PROJECT_URL}"
+UA = (f"unios-courses/1.0 (+{PROJECT_URL}"
       + (f"; contact: {CONTACT}" if CONTACT else "") + ")")
 CACHE = os.environ.get("ISVU_CACHE", os.path.expanduser("~/.cache/isvu"))
 MIN_INTERVAL = 1.0 / 3          # 3 req/s ceiling, across all threads
@@ -221,8 +221,8 @@ def cmd_institutions(a):
         if idm and len(cells) >= 3:
             res.append({"id": int(idm.group(1)), "naziv": cells[0],
                         "nadredjena": cells[1], "grad": cells[2]})
-    if a.unizg:
-        res = [x for x in res if "Sveučilište u Zagrebu" in x["nadredjena"]]
+    if a.unios:
+        res = [x for x in res if "Sveučilište Josipa Jurja Strossmayera u Osijeku" in x["nadredjena"]]
     if a.search:
         q = fold(a.search)
         res = [x for x in res if q in fold(x["naziv"])]
@@ -573,7 +573,7 @@ def main():
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     p = sub.add_parser("institutions", help="list institutions and their ISVU ids")
-    p.add_argument("--unizg", action="store_true", help="only UNIZG constituents")
+    p.add_argument("--unios", action="store_true", help="only SUJJS (Osijek) constituents")
     p.add_argument("--search")
     p.set_defaults(fn=cmd_institutions)
 

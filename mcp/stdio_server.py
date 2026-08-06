@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Local stdio MCP server for the UNIZG course catalog.
+"""Local stdio MCP server for the SUJJS (Osijek) course catalog.
 
 For Claude Desktop and Claude Code, which speak MCP over stdio. The Claude web and
 mobile apps cannot use this: they need the remote HTTP endpoint in api/mcp.py.
@@ -7,7 +7,7 @@ mobile apps cannot use this: they need the remote HTTP endpoint in api/mcp.py.
     python3 mcp/stdio_server.py
 
 Claude Desktop config:
-    {"mcpServers": {"unizg-courses": {"command": "python3",
+    {"mcpServers": {"unios-courses": {"command": "python3",
                                       "args": ["/abs/path/to/mcp/stdio_server.py"]}}}
 """
 import json

@@ -1,6 +1,6 @@
 // Zadani popis kolegija: preddiplomski studij Programsko inženjerstvo, izborni blok unutar
 // Računarstvo (redovni), FERIT, Sveučilište Josipa Jurja Strossmayera u Osijeku.
-// Izvor: ISVU, preko unizg_dag_json (faculty_id=165, razina=3, izvedba=R, smjer=67).
+// Izvor: ISVU, preko unios_dag_json (faculty_id=165, razina=3, izvedba=R, smjer=67).
 // semestar: "zimski" = neparni (1,3,5), "ljetni" = parni (2,4,6). godina = ceil(semestar/2).
 // uvjet: "polozen" = položen ispit, "odslusan" = odslušan kolegij (oba: preduvjet u ranijem semestru).
 // FERIT ne objavljuje strukturirane upisne preduvjete za ovaj program, pa su svi preduvjeti prazni.

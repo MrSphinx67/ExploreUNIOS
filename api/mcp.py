@@ -1,4 +1,4 @@
-"""Remote MCP endpoint (Streamable HTTP) for the UNIZG course catalog.
+"""Remote MCP endpoint (Streamable HTTP) for the SUJJS (Osijek) course catalog.
 
 Deployed as a Vercel Python function, so it ships with the website: POST JSON-RPC to
 /api/mcp. Remote HTTP is what the Claude web and mobile apps need; the local stdio
@@ -17,11 +17,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from _core import handle_rpc  # noqa: E402  (needs the path above)
 
 INFO = {
-    "name": "unizg-courses",
+    "name": "unios-courses",
     "transport": "streamable-http",
     "endpoint": "/api/mcp",
     "usage": "POST JSON-RPC 2.0. Add this URL as a custom connector in the Claude app.",
-    "scope": "UNIZG course catalog: courses, curricula, literature, prerequisites. Not a people directory.",
+    "scope": "SUJJS (Osijek) course catalog: courses, curricula, literature, prerequisites. Not a people directory.",
 }
 
 

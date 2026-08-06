@@ -1,8 +1,13 @@
 # Kolegiji DAG + najraniji raspored
 
-Mali alat: modelira kolegije preddiplomskog studija **Molekularna biologija (PMF UNIZG)** kao
-**DAG** (čvor = kolegij, usmjereni brid = preduvjet) i računa **najraniji semestar** u kojem se
-svaki kolegij može odslušati te **najraniji završetak svih** kolegija.
+Mali alat: modelira kolegije preddiplomskog studija **Programsko inženjerstvo (redovni), FERIT,
+Sveučilište Josipa Jurja Strossmayera u Osijeku** kao **DAG** (čvor = kolegij, usmjereni brid =
+preduvjet) i računa **najraniji semestar** u kojem se svaki kolegij može odslušati te **najraniji
+završetak svih** kolegija.
+
+`kolegiji.json` u ovom folderu je identičan popisu kolegija u root `kolegiji.json`-u (zadani popis
+web-app scheduler-a): ovaj alat postoji da neovisno o pregledniku provjeri isti DAG iz komandne
+linije, pa oba fajla namjerno drže isti `kolegiji` niz.
 
 ## Datoteke
 - **`kolegiji.json`**: izvor istine. Za svaki kolegij: `naziv`, `semestar` (`zimski`|`ljetni`),
@@ -37,7 +42,8 @@ python3 raspored.py put/do.json
   gdje se razlikuje od službenog plana.
 
 ## Izvor podataka
-Preduvjeti i semestri preuzeti iz službenih INFO modala kolegija
-(`Preduvjeti za: Upis predmeta`) na
-<https://www.pmf.unizg.hr/studiji/preddiplomski_studiji/bioloski_odsjek/molekularna_biologija>.
-Provjeri i po potrebi ispravi u `kolegiji.json`.
+Kolegiji, semestri, ECTS i preduvjeti preuzeti iz ISVU javnog kataloga, preko `unios_dag_json` alata
+(`faculty_id=165` za FERIT, `razina=3`, `izvedba=R`, `smjer=67`). Vidi komentar na vrhu `js/data.js`
+za isti izvor koji koristi web-app scheduler. FERIT u ISVU-u ne objavljuje strukturirane upisne
+preduvjete za ovaj program, pa su svi `preduvjeti` u `kolegiji.json` prazni; uređuj slobodno ako želiš
+modelirati vlastite pretpostavke o redoslijedu.

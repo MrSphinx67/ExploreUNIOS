@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "api/mcp.py": {
-      "includeFiles": "skills/unizg-courses/scripts/isvu.py",
+      "includeFiles": "skills/unios-courses/scripts/isvu.py",
       "maxDuration": 300
     }
   }
