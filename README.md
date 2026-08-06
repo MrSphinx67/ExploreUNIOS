@@ -43,7 +43,7 @@ official programme puts it, and a red arrow is the difference. The bars are ECTS
 **Claude web and mobile.** Settings, Connectors, Add custom connector, and paste:
 
 ```
-https://horizontal-mobility.vercel.app/api/mcp
+https://explore-unios.vercel.app/api/mcp
 ```
 
 **Claude Desktop or Claude Code.** Run it locally instead, nothing to deploy:
