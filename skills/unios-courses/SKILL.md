@@ -75,7 +75,7 @@ starting year of the academic year (2025 means 2025/2026).
 |---|---|
 | `/pretrazivanje` | all 125 institutions with ids |
 | `/podaci/{inst}/predmeti` | full course list, one page, no pagination |
-| `/podaci/{inst}/predmeti/akademskagodina/{yyyy}` | same, chosen year (back to 1976) |
+| `/podaci/{inst}/predmeti/akademskagodina/{yyyy}` | same, chosen year (empty before the faculty's earliest digitised year, varies) |
 | `/podaci/{inst}/akademskagodina/{yyyy}/predmeti/predmet/{code}` | course detail |
 | `/podaci/{inst}/dohvatirazine/{yyyy}` | study levels, **JSON** |
 | `/podaci/{inst}/razina/{r}/dohvatiizvedbe/{yyyy}` | delivery modes, **JSON** |
@@ -149,10 +149,13 @@ highest-ECTS row, earliest semester breaking ties, and unions the prerequisites,
 row sometimes carries them instead. **Merge before resolving anything by name**, or a name lookup picks
 whichever row came first, which is the 0 ECTS placeholder.
 
-**A whole programme is usually the wrong export.** Fizika/istraživački is 103 rows and draws an
-unreadable graph. What "what do I need for X" means is the upstream closure of X, normally 5–20 courses.
-Walk it level by level from the target: smaller *and* cheaper, since you only fetch courses that turn
-out to feed in, 8 pages instead of 99 for the Klasična elektrodinamika chain.
+**A whole programme is usually the wrong export.** `target` currently returns just the one course for
+almost any SUJJS course — unlike UNIZG, no SUJJS institution publishes structured upis-prerequisites
+(0% measured across all 18 institutions, every FERIT programme, and Medicina's 140-course programme),
+so there's no upstream chain to walk. Say that plainly rather than implying the course has no
+prerequisites. Omitting `target` is the one that gets large: whole-programme exports here run from a
+few dozen courses (FERIT: 23-47) to 140 for Medicina's integrated programme. If a faculty starts
+publishing prerequisites, `target` again gets you the upstream closure instead of the whole programme.
 
 **`semestar` is a hard constraint on placement, so get it right.** The scheduler puts a course in the
 first slot that is both after all its prerequisites and in the course's own season (zimski = odd slots,
@@ -209,7 +212,7 @@ faculty did not publish it rather than implying the course lacks it.**
   is concentrated — Odjel za kemiju and Katolički bogoslovni fakultet u Đakovu account for most of what
   exists, most other faculties have none. An absent value says nothing about the actual teaching
   language.
-- how a curriculum changed over time, since years go back to 1976/77 and 2026/2027 is already published
+- how a curriculum changed over time, at least back to the late 1990s/2000s depending on the faculty, and 2026/2027 is already published
 - real cost of a course: `Opterećenje` gives the per-type hours, so hours-per-ECTS is computable and
   nobody else publishes it
 

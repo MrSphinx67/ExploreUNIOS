@@ -70,7 +70,8 @@ Seven of them. Two things the six catalog ones share:
   work, and so do the other abbreviations people actually use (EFOS, PRAVOS, GFOS, MEFOS, FFOS). Ask
   `unios_institutions` if you want the id.
 - **Everything accepts a year**, as the starting year: `2025` means 2025/2026. It goes back to
-  1976/77, and 2026/2027 is already published. Omit it and you get the current one.
+  the late 1990s/2000s depending on the faculty (not as far back as UNIZG's 1976/77), and
+  2026/2027 is already published. Omit it and you get the current one.
 
 ---
 
@@ -188,8 +189,8 @@ it is just unreadable.
 ## Where the data comes from
 
 The [ISVU public catalog](https://www.isvu.hr/visokaucilista/hr/pocetna), the official system SRCE runs
-for the ministry: 18 SUJJS (Osijek) faculties, roughly 9,500 courses, years back to 1976/77. It is read
-live, nothing is cached in this repository.
+for the ministry: 18 SUJJS (Osijek) faculties, roughly 9,500 courses, years back to the late
+1990s/2000s depending on the faculty. It is read live, nothing is cached in this repository.
 
 Coverage is uneven because it is only as complete as each faculty made it. Semester and ECTS are almost
 always there. Descriptions cover under half of courses, learning outcomes a third, prerequisites about

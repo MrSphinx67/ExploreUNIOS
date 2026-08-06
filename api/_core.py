@@ -41,7 +41,7 @@ isvu = _load_isvu()
 INSTRUCTIONS = """\
 Read-only access to the official Sveučilište Josipa Jurja Strossmayera u Osijeku (SUJJS) course catalog, the ISVU public data
 module that SRCE runs for the ministry. 18 constituent faculties, roughly 9,500 courses, academic
-years back to 1976/77.
+years back to the late 1990s/2000s depending on the faculty.
 
 WHAT THIS IS FOR
 Teaching data: what a course covers, its ECTS, semester, workload, prerequisites, and its required
@@ -119,12 +119,14 @@ unios_dag_json returns courses in the exact JSON the companion scheduler web app
 can paste it straight in and get a prerequisite DAG with an earliest-completion schedule. Offer this
 whenever someone asks to plan or visualise what leads to a course.
 
-Pass `target` in almost every case. It returns the named course plus only what transitively feeds
-into it, which is what "what do I need before X" actually means and is normally 5-20 courses: a
-graph someone can read. Omitting `target` exports the entire programme, which for Fizika/istrazivacki
-is 103 courses and draws an unusable hairball. Only omit it when the user explicitly wants the whole
-programme laid out. `max_depth` bounds the walk if even the chain is too big; max_depth 1 gives just
-the direct prerequisites.
+Pass `target` when the user wants what feeds into a specific course. Right now that mostly returns
+just the course itself: unlike UNIZG, no SUJJS institution currently publishes structured
+upis-prerequisites (measured 0% across all 18, including every FERIT programme), so there's usually
+no upstream chain to walk. Say that plainly rather than implying a course has no prerequisites.
+Omitting `target` exports the entire programme instead, which runs from a few dozen courses (FERIT:
+23-47) to 100+ for a large integrated programme (Medicina: 140) — still worth avoiding for size, just
+not for the "hairball" a real prerequisite graph would draw. Only omit it when the user explicitly
+wants the whole programme laid out.
 
 Tell them prerequisite coverage is patchy: Arhitektonski is the richest in ISVU, PMF and PBF publish
 more on their own faculty sites, and FER publishes none anywhere. An empty preduvjeti list means
@@ -419,13 +421,13 @@ def _prereqs_from(docs, course):
 
 
 def _walk_upstream(root, all_courses, max_depth=None):
-    """The target course plus everything that feeds into it, transitively.
-
-    Exporting a whole programme gives an unreadable graph: Fizika/istrazivacki is 103
-    courses, and answers a question nobody asked. What you actually want is "what do I
-    need before I can take X", which is the upstream closure of X and usually a handful of
-    courses. Walking it level by level also fetches far fewer pages than the whole
-    programme, since it only touches courses that turn out to matter.
+    """The target course plus everything that feeds into it, transitively — currently just the
+    course itself for almost every SUJJS course, since preduvjeti za upis is essentially
+    unpublished here (0% measured across all 18 institutions). Exporting a whole programme
+    instead gives 23-140+ disconnected course records (FERIT's smallest to Medicina's
+    integrated programme) and answers a question nobody asked. Walking level by level costs
+    nothing extra today since there's rarely anything to walk, but stays correct if a faculty
+    starts publishing prerequisites.
     """
     by_name = {}
     for c in all_courses:
