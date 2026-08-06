@@ -162,29 +162,29 @@ Never guess `semestar` to make a schedule look tighter: it changes the answer.
 
 ## Coverage honesty
 
-Measured over 370 sampled courses across all 37 UNIZG constituents (this skill's original scope,
-before it was pointed at SUJJS/Osijek's 18). The percentages below are carried over as directionally
-right and are what `api/_core.py`'s INSTRUCTIONS currently state for Osijek too; they have not been
-re-measured against the 18 SUJJS constituents specifically, so treat them as an estimate pending a
-fresh sample:
+Measured over 180 sampled courses across all 18 SUJJS constituents (10 pseudo-random courses per
+institution, `random.seed(42)`, measured 2026-08-06 — see `references/institutions.md` for the
+per-institution breakdown):
 
 | field | coverage |
 |---|---|
-| semester, programme, obavezni/izborni | 98% |
-| nositelj | 82% |
-| opis predmeta | 46% |
-| ishodi učenja | 34% |
-| preduvjeti za upis | 10% |
-| jezici izvođenja nastave | 12% |
+| semester, programme, obavezni/izborni | 100% |
+| nositelj | 87% |
+| opis predmeta | 24% |
+| ishodi učenja | 52% |
+| preduvjeti za upis | 0% |
+| preduvjeti za polaganje | 2% |
+| jezici izvođenja nastave | 10% |
 
 Ishodi učenja are **not a structured field**. Where present they are prose inside `Opis predmeta`
-under institution-specific headings such as `OČEKIVANI ISHODI UČENJA NA RAZINI PREDMETA:` (PMF) while
-others write `Ciljevi kolegija` / `Sadržaj kolegija` and no outcomes at all. Extract by segmenting
-the description text.
+under faculty-specific headings that vary; some faculties write `Ciljevi kolegija` / `Sadržaj
+kolegija` and no outcomes at all. Extract by segmenting the description text.
 
-Coverage is bimodal, not evenly thin: FSB and PMF-matematički have ishodi on essentially every
-course, while Agronomski, FOI, MEF, Kineziološki, EFZG and Pravni have none. **When a field is
-missing, say the faculty did not publish it rather than implying the course lacks it.**
+Coverage is bimodal, not evenly thin: FFOS, FOOZOS and FPMOI have ishodi on every sampled course,
+while EFOS, FAZOS, PRAVOS, FERIT and FDMZ have none. Descriptions (opis) are thinner here than
+outcomes are — 9 of the 18 institutions had 0/10 in the sample, only Odjel za biologiju (9/10) and
+Prehrambeno-tehnološki (7/10) are reliably well documented. **When a field is missing, say the
+faculty did not publish it rather than implying the course lacks it.**
 
 ## Good questions this answers
 
@@ -205,9 +205,10 @@ missing, say the faculty did not publish it rather than implying the course lack
   course capacity are settled per-faculty. Do **not** answer as though it were an established right the
   way UNIZG frames it, and do **not** invent a fee or a deadline.
   Do **not** offer to filter by language of instruction: `Jezici izvođenja nastave` is published for
-  ~12% of courses and marked English for ~1% (measured over 120 courses at 10 faculties), and it is
-  concentrated, VEF fills it on every course, most faculties on none. An absent value says nothing
-  about the actual teaching language.
+  ~10% of courses and marked English for ~4% (measured over the same 180-course sample above), and it
+  is concentrated — Odjel za kemiju and Katolički bogoslovni fakultet u Đakovu account for most of what
+  exists, most other faculties have none. An absent value says nothing about the actual teaching
+  language.
 - how a curriculum changed over time, since years go back to 1976/77 and 2026/2027 is already published
 - real cost of a course: `Opterećenje` gives the per-type hours, so hours-per-ECTS is computable and
   nobody else publishes it
