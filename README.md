@@ -1,6 +1,6 @@
 ![Explore UNIOS — MCP tool: Sveučilište Josipa Jurja Strossmayera u Osijeku, one tool call away](docs/title.png)
 
-# explore_unizg
+# explore_unios
 
 Two tools for planning studies at Sveučilište Josipa Jurja Strossmayera u Osijeku (SUJJS).
 
