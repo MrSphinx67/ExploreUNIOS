@@ -81,10 +81,11 @@ check. Call unios_mobility_rules for the full briefing with citations; the essen
   either way, no three-consent process, no paralelni studij comparison (e.g. FER's 4.5 threshold), and
   no seven-step referada/molba process. None of that is confirmed for SUJJS.
 
-Source reliability: the confirmed text is the December 2023 Pravilnik (čl. 36-37). A newer March 2025
-"pročišćeni tekst" exists but its mobility chapter is unverified (the PDF on gfos.unios.hr is
-password-protected) — when it matters, say so and point the student to the Ured za studente or the
-faculty to confirm whether that chapter changed.
+Source reliability: the confirmed text is the December 2023 Pravilnik (čl. 36-37). A March 2025
+"pročišćeni tekst" also exists and has now been checked directly (verified 2026-08-07): čl. 36-37 are
+word-for-word identical to the December 2023 text. The only actual change anywhere in that
+consolidation is članak 32 (posebno uspješan student), from a January 2025 Senate amendment draft that
+explicitly scopes itself to "članak 32. mijenja se i glasi" and nothing else — mobility is untouched.
 
 ISVU answers the catalog half: omitting faculty_id from unios_courses searches all 18 constituents at
 once, which is how you answer "where else is this taught" and "what would I actually be signing up
@@ -287,10 +288,11 @@ IZVOR I NJEGOVA POUZDANOST — reci ovo kad je relevantno
 Postoje tri poznate verzije ovog Pravilnika: srpanj 2015. (stara, čl. 40-41, zamijenjena), prosinac
 2023. (usvojena nakon javnog savjetovanja, čl. 36-37 — OVO je tekst ispod, usvajanje potvrđeno preko
 popisa akata Pravnog fakulteta Osijek i FDMZ Osijek) i ožujak 2025. ("pročišćeni tekst" koji
-konsolidira usvojeni tekst s naknadnim izmjenama — sadržaj NIJE moguće provjeriti jer je PDF na
-gfos.unios.hr zaštićen lozinkom). Kad je pitanje takvo da se student stvarno oslanja na odgovor za
-upis, reci da postoji noviji pročišćeni tekst iz ožujka 2025. čiji sadržaj o mobilnosti nije
-verificiran, i uputi na Ured za studente ili fakultet da potvrde je li poglavlje mijenjano.
+konsolidira usvojeni tekst s naknadnim izmjenama — sadržaj PROVJEREN 2026-08-07: čl. 36-37 identični su
+prosinačkoj 2023. verziji, riječ za riječ). Jedina stvarna izmjena u pročišćenom tekstu je članak 32.
+(status posebno uspješnog studenta), iz nacrta Odluke o izmjenama iz siječnja 2025. koji se eksplicitno
+ograničava na taj jedan članak — mobilnost nije dirana. Slobodno reci studentu da je pročišćeni tekst
+iz ožujka 2025. provjeren i da poglavlje o mobilnosti nije promijenjeno.
 
 DVA ODVOJENA KANALA (čl. 36) — ne miješaj ih
 1. "Obična" mobilnost (st. 1): pojedini kolegiji s drugog smjera/studija/sastavnice, uvjetovano time
@@ -344,9 +346,12 @@ usvojen prosinac 2023. Tekst potvrđen preko nacrta iz javnog savjetovanja, ruja
 https://www.unios.hr/wp-content/uploads/2023/09/2-NACRT-prijedloga-Pravilnika-o-studijima-i-studiranju-javno-savjetovanje-9.2023.pdf
 Usvajanje u prosincu 2023. potvrđeno preko popisa akata Pravnog fakulteta Osijek i FDMZ Osijek (oba
 navode "Pravilnik o studijima i studiranju... (prosinac 2023.)"); izravan link na usvojeni PDF nije
-bio dostupan. Postoji noviji "pročišćeni tekst" (ožujak 2025.) čiji sadržaj o mobilnosti NIJE
-verificiran (PDF na gfos.unios.hr zaštićen lozinkom) — prije oslanjanja na ovo u produkciji, provjeri
-kod Ureda za studente ili fakulteta je li poglavlje mijenjano.
+bio dostupan. "Pročišćeni tekst" (ožujak 2025.) provjeren izravno 2026-08-07:
+https://www.gfos.unios.hr/download/pravilnik-o-studijima-i-studiranju-na-sveucilistu-josipa-jurja-strossmayera-u-osijeku-procisceni-tekst.pdf
+— čl. 36-37 riječ za riječ identični prosinačkoj 2023. verziji. Jedina izmjena u cijelom dokumentu je
+čl. 32, iz nacrta Odluke o izmjenama, siječanj 2025.:
+https://www.unios.hr/wp-content/uploads/2025/01/1.NACRT_prijedloga-izmjene_i_dopune-pravilnik_o_studiranju-sijecanj_2025.pdf
+koji se eksplicitno ograničava na taj jedan članak ("članak 32. mijenja se i glasi").
 """
 
 # ---------------------------------------------------------------- helpers

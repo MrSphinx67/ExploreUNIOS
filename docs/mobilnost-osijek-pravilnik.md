@@ -8,16 +8,30 @@ Postoje tri poznate verzije Pravilnika o studijima i studiranju SUJJS:
 2. **Prosinac 2023.** — usvojena verzija nakon javnog savjetovanja (nacrt iz rujna
    2023.), članci 36-37. **Ovaj tekst je dolje.**
 3. **Ožujak 2025.** — noviji "pročišćeni tekst" koji konsolidira usvojeni tekst s
-   naknadnim izmjenama. Nije bilo moguće provjeriti sadržaj jer je PDF na
-   gfos.unios.hr zaštićen lozinkom za preuzimanje. **Prije korištenja u produkciji,
-   provjeriti kod Ureda za studente ili na fakultetu je li poglavlje o mobilnosti
-   (čl. 36-37 u verziji iz prosinca 2023.) mijenjano tom konsolidacijom.**
+   naknadnim izmjenama. **Verificirano 2026-08-07: čl. 36-37 (mobilnost) identični
+   su verziji iz prosinca 2023., riječ za riječ.** PDF na gfos.unios.hr NIJE
+   stvarno zaštićen lozinkom — "lozinka za preuzimanje" je client-side gejt na
+   download-stranici; izravan GET na file URL vraća PDF bez autentikacije (HTTP
+   200, `Last-Modified: 26.3.2025.`). Dokument je sken (Ricoh fotokopirni uređaj),
+   pa ga treba renderirati u sliku i pročitati vizualno — `pdftotext` ne izvlači
+   ništa. Jedina stvarna izmjena u cijelom Pravilniku je članak 32. (status
+   "posebno uspješnog studenta": ministar sad može odobriti upis još jednog
+   studija uz punu subvenciju školarine), iz nacrta Odluke o izmjenama i
+   dopunama, siječanj 2025. — taj nacrt eksplicitno kaže "članak 32. mijenja se i
+   glasi", ničeg drugog. Numeracija ostalih članaka (uključujući 36-37) time
+   ostaje nepromijenjena.
 
 Izvor teksta ispod: nacrt Pravilnika, rujan 2023., javno savjetovanje
 (https://www.unios.hr/wp-content/uploads/2023/09/2-NACRT-prijedloga-Pravilnika-o-studijima-i-studiranju-javno-savjetovanje-9.2023.pdf),
 potvrđeno da je usvojen u prosincu 2023. (potvrđeno preko popisa akata Pravnog
 fakulteta Osijek i FDMZ Osijek, koji obojica navode "Pravilnik o studijima i
 studiranju... (prosinac 2023.)").
+
+Pročišćeni tekst iz ožujka 2025. (čl. 36-37 verificirani):
+https://www.gfos.unios.hr/download/pravilnik-o-studijima-i-studiranju-na-sveucilistu-josipa-jurja-strossmayera-u-osijeku-procisceni-tekst.pdf
+Nacrt Odluke o izmjenama i dopunama, siječanj 2025. (samo čl. 32, ne dira
+mobilnost):
+https://www.unios.hr/wp-content/uploads/2025/01/1.NACRT_prijedloga-izmjene_i_dopune-pravilnik_o_studiranju-sijecanj_2025.pdf
 
 ---
 

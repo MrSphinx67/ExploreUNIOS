@@ -14,10 +14,17 @@ studentu kao da ima neuvjetovano pravo na mobilnost; provjeri je li program to p
 |---|---|
 | Srpanj 2015. | Stara, čl. 40-41. Zamijenjena. |
 | **Prosinac 2023.** | Usvojena nakon javnog savjetovanja (nacrt rujan 2023.), čl. 36-37. **Ovo je tekst ispod.** Usvajanje potvrđeno preko popisa akata Pravnog fakulteta Osijek i FDMZ Osijek. |
-| Ožujak 2025. | "Pročišćeni tekst", konsolidira usvojeni tekst s naknadnim izmjenama. Sadržaj NIJE provjeren — PDF na gfos.unios.hr zaštićen lozinkom. |
+| Ožujak 2025. | "Pročišćeni tekst", konsolidira usvojeni tekst s naknadnim izmjenama. **Provjereno 2026-08-07: čl. 36-37 identični prosinačkoj 2023. verziji, riječ za riječ.** |
 
-Prije korištenja u produkciji za nešto na što se student stvarno oslanja, provjeri kod Ureda za
-studente ili na fakultetu je li poglavlje o mobilnosti mijenjano konsolidacijom iz ožujka 2025.
+Jedina stvarna izmjena u cijelom pročišćenom tekstu je članak 32. (status "posebno uspješnog
+studenta") — iz nacrta Odluke o izmjenama, siječanj 2025., koji se eksplicitno ograničava na taj jedan
+članak ("članak 32. mijenja se i glasi"). Mobilnost (čl. 36-37) nije dirana; numeracija ostalih
+članaka ostaje ista.
+
+Napomena o pristupu: "lozinka za preuzimanje" na gfos.unios.hr je client-side gejt na download-
+stranici, ne stvarna zaštita na datoteci — izravan GET na file URL vraća PDF bez autentikacije. Sam
+dokument je sken (Ricoh fotokopirni uređaj), pa `pdftotext` iz njega ne izvlači tekst; treba ga
+renderirati u sliku i pročitati vizualno.
 
 Izvor teksta ispod: nacrt Pravilnika, rujan 2023., javno savjetovanje:
 https://www.unios.hr/wp-content/uploads/2023/09/2-NACRT-prijedloga-Pravilnika-o-studijima-i-studiranju-javno-savjetovanje-9.2023.pdf
@@ -89,5 +96,9 @@ studenta na svoju sastavnicu / Ured za studente.
 - Usvajanje u prosincu 2023. potvrđeno preko popisa akata Pravnog fakulteta Osijek i FDMZ Osijek
   (oba navode "Pravilnik o studijima i studiranju... (prosinac 2023.)"); izravan link na usvojeni PDF
   nije bio dostupan u trenutku istraživanja.
-- "Pročišćeni tekst", ožujak 2025., na gfos.unios.hr — sadržaj NIJE verificiran (PDF zaštićen
-  lozinkom). Provjeri prije oslanjanja u produkciji.
+- "Pročišćeni tekst", ožujak 2025., provjeren izravno 2026-08-07:
+  https://www.gfos.unios.hr/download/pravilnik-o-studijima-i-studiranju-na-sveucilistu-josipa-jurja-strossmayera-u-osijeku-procisceni-tekst.pdf
+  — čl. 36-37 riječ za riječ identični prosinačkoj 2023. verziji.
+- Nacrt Odluke o izmjenama i dopunama, siječanj 2025. (jedina izmjena u cijelom Pravilniku, čl. 32,
+  mobilnost nije dirana):
+  https://www.unios.hr/wp-content/uploads/2025/01/1.NACRT_prijedloga-izmjene_i_dopune-pravilnik_o_studiranju-sijecanj_2025.pdf
